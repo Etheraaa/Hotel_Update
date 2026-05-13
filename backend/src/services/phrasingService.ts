@@ -35,7 +35,12 @@ function isValidScenarioIds(ids: string[]) {
   return ids.every((id) => allowed.has(id));
 }
 
-export class InvalidPhrasingRequestError extends Error {}
+export class InvalidPhrasingRequestError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "InvalidPhrasingRequestError";
+  }
+}
 
 export { ConfigurationError, UpstreamGenerationError };
 

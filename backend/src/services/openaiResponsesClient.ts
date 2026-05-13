@@ -19,9 +19,19 @@ function readResponseText(data: any) {
   return typeof messageText === "string" && messageText.length > 0 ? messageText : "";
 }
 
-export class ConfigurationError extends Error {}
+export class ConfigurationError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "ConfigurationError";
+  }
+}
 
-export class UpstreamGenerationError extends Error {}
+export class UpstreamGenerationError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "UpstreamGenerationError";
+  }
+}
 
 function shouldUseChatCompletions(baseUrl: string) {
   if (process.env.OPENAI_API_MODE === "chat") return true;
